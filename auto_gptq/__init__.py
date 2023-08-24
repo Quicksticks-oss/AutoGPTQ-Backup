@@ -1,4 +1,5 @@
-__version__ = "0.4.1"
+__version__ = "0.4.1-Patched"
+print(f'AutoGPTQ-{__version__}')
 from .modeling import BaseQuantizeConfig
 from .modeling import AutoGPTQForCausalLM
 from .utils.peft_utils import get_gptq_peft_model
