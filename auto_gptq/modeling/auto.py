@@ -1,4 +1,3 @@
-from inspect import signature
 from typing import Dict, Optional, Union
 
 from ._base import BaseQuantizeConfig, BaseGPTQForCausalLM
@@ -99,12 +98,9 @@ class AutoGPTQForCausalLM:
             "_raise_exceptions_for_missing_entries",
             "_commit_hash"
         ]
-        # TODO: do we need this filtering of kwargs? @PanQiWei is there a reason we can't just pass all kwargs?
-        keywords = {
-            key: kwargs[key]
-            for key in list(signature(quant_func).parameters.keys()) + huggingface_kwargs
-            if key in kwargs
-        }
+        
+        keywords = kwargs.copy()
+        
         return quant_func(
             model_name_or_path=model_name_or_path,
             device_map=device_map,

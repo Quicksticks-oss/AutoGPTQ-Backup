@@ -2,7 +2,7 @@ import sys
 import torch
 import numpy as np
 from tqdm import tqdm
-from datasets import load_dataset
+#from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 
@@ -62,7 +62,7 @@ class Perplexity:
             self._dataset_name = 'wikitext-2-raw-v1'
         
         # Load the dataset
-        data = load_dataset(self._dataset_path, self._dataset_name, split=self._split)
+        data = None #load_dataset(self._dataset_path, self._dataset_name, split=self._split)
         # Format the text column of the dataset
         text_list = [' \n' if s == '' else s for s in data[self._text_column]]
         return ''.join(text_list)

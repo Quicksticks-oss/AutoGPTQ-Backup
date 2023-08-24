@@ -4,7 +4,7 @@ from functools import partial
 from typing import Callable, Dict, List, Optional
 
 import torch
-from datasets import load_dataset, DatasetDict, IterableDatasetDict
+#from datasets import load_dataset, DatasetDict, IterableDatasetDict
 from torch import LongTensor
 from torch.utils.data import DataLoader
 from transformers import PreTrainedTokenizer
@@ -223,15 +223,15 @@ def get_dataloader(
 
     if load_fn:
         ds = load_fn(data_path_or_name, **load_fn_kwargs)
-    else:
-        ds = load_dataset(data_path_or_name, **load_fn_kwargs)
-    if isinstance(ds, (DatasetDict, IterableDatasetDict)):
-        if "evaluation" in ds:
-            ds = ds["evaluation"]
-        elif "test" in ds:
-            ds = ds["test"]
-        else:
-            ds = ds["train"]
+    #else:
+    #    ds = load_dataset(data_path_or_name, **load_fn_kwargs)
+    #if isinstance(ds, (DatasetDict, IterableDatasetDict)):
+    #    if "evaluation" in ds:
+    #        ds = ds["evaluation"]
+    #    elif "test" in ds:
+    #        ds = ds["test"]
+    #    else:
+    #        ds = ds["train"]
 
     ds = ds.select(indices=random.sample(range(len(ds)), min(len(ds), num_samples)), keep_in_memory=True)
     ds = ds.map(

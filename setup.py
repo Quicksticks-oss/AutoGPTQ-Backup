@@ -68,7 +68,6 @@ if BUILD_CUDA_EXT:
 
 requirements = [
     "accelerate>=0.19.0",
-    "datasets",
     "numpy",
     "rouge",
     "torch>=1.13.0",
