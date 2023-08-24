@@ -2,12 +2,7 @@ from packaging.version import parse as parse_version
 from logging import getLogger
 import torch
 
-try:
-    import triton
-
-    TRITON_AVAILABLE = True
-except ImportError:
-    TRITON_AVAILABLE = False
+TRITON_AVAILABLE = False
 
 try:
     import autogptq_cuda_256
